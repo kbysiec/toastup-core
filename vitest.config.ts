@@ -1,3 +1,5 @@
+import path from "path";
+
 export default {
   test: {
     globals: true,
@@ -7,8 +9,9 @@ export default {
     },
   },
   resolve: {
-    alias: {
-      "@/": new URL("./src/", import.meta.url).pathname,
-    },
+    alias: [
+      { find: "@", replacement: path.resolve(__dirname, "src") },
+      { find: "@@", replacement: path.resolve(__dirname) },
+    ],
   },
 };
