@@ -1,12 +1,7 @@
-import {
-  ActionType,
-  Toast,
-  actionType,
-  cssClassNames,
-  displayOrder,
-  sleep,
-  updateToastTranslate,
-} from ".";
+import { actionType, cssClassNames, displayOrder } from "@/constants";
+import { updateToastTranslate } from "@/toastUtils";
+import { ActionType, Toast } from "@/types";
+import { sleep } from "@/utils";
 
 function repositionToast(toast: Toast, touchedToast: Toast, type: ActionType) {
   const typeMultiplier = type === actionType.add ? 1 : -1;

@@ -1,4 +1,4 @@
-import { Toast } from ".";
+import { Toast } from "@/types";
 
 const queue = new Map<string, Toast>();
 

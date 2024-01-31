@@ -1,4 +1,5 @@
 import CSS from "csstype";
+
 import {
   actionType,
   animationElementSelector,
@@ -9,7 +10,7 @@ import {
   position,
   theme,
   type,
-} from ".";
+} from "@/constants";
 
 declare global {
   interface DocumentEventMap {

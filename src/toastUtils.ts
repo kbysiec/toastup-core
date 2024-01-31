@@ -1,14 +1,6 @@
-import {
-  // Animation,
-  AnimationElementSelector,
-  Toast,
-  animationElementSelector,
-  cssClassNames,
-  getTransformOtherThan,
-  sleep,
-} from ".";
-
-import { Animation } from "@/types";
+import { animationElementSelector, cssClassNames } from "@/constants";
+import { Animation, AnimationElementSelector, Toast } from "@/types";
+import { getTransformOtherThan, sleep } from "@/utils";
 
 export const updateToastTranslate = (
   toast: Toast,

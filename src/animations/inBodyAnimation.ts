@@ -1,5 +1,5 @@
-import { InBodyAnimation, animationType } from "..";
-
+import { animationType } from "@/constants";
+import { InBodyAnimation } from "@/types";
 import "./inBodyAnimation.scss";
 
 export const zoomInBody: InBodyAnimation = {

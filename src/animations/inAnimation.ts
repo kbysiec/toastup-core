@@ -1,5 +1,6 @@
 // import "animate.css";
-import { InAnimation, animationType } from "..";
+import { animationType } from "@/constants";
+import { InAnimation } from "@/types";
 import "./inAnimation.scss";
 
 export const fadeIn: InAnimation = {

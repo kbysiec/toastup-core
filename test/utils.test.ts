@@ -7,8 +7,9 @@ import {
   it,
   vi,
 } from "vitest";
-import { slideVerticallyIn, slideVerticallyOut } from "../src/animations";
+import { slideVerticallyIn } from "../src/animations/inAnimation";
 import { slideHorizontalWithFadeInBody } from "../src/animations/inBodyAnimation";
+import { slideVerticallyOut } from "../src/animations/outAnimation";
 import {
   animationType,
   displayOrder,

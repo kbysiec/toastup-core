@@ -1,12 +1,8 @@
-import {
-  Toast,
-  cssClassNames,
-  eventManager,
-  events,
-  reindexToastsForPosition,
-  toastQueue,
-  update,
-} from "..";
+import { cssClassNames, events } from "@/constants";
+import { eventManager } from "@/eventManager";
+import { reindexToastsForPosition } from "@/toastPositionManager";
+import { toastQueue, update } from "@/toastQueue";
+import { Toast } from "@/types";
 
 function addNecessaryClassName(toast: Toast) {
   toast.element && toast.element.classList.add(cssClassNames.toast);

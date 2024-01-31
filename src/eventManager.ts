@@ -1,4 +1,4 @@
-import { EventCallback, EventType, Payload } from ".";
+import { EventCallback, EventType, Payload } from "@/types";
 
 export const eventManager = {
   on(type: EventType, callback: EventCallback) {
