@@ -143,7 +143,7 @@ export interface ToastOnlyProps {
   dimensions: { height: number; width: number };
   translate: { x: number; y: number };
   autoHideDetails: {
-    intervalId?: NodeJS.Timer;
+    intervalId?: NodeJS.Timeout | number;
     isPaused: boolean;
     timeVisible: number;
   };
