@@ -1,13 +1,8 @@
-import {
-  Toast,
-  displayOrder,
-  position,
-  slideHorizontalWithFadeInBody,
-  slideVerticallyIn,
-  slideVerticallyOut,
-  theme,
-  type,
-} from "../src";
+import { slideVerticallyIn } from "../src/animations/inAnimation";
+import { slideHorizontalWithFadeInBody } from "../src/animations/inBodyAnimation";
+import { slideVerticallyOut } from "../src/animations/outAnimation";
+import { displayOrder, position, theme, type } from "../src/constants";
+import { Toast } from "../src/types";
 
 export const toastBase: Toast = {
   id: "123",

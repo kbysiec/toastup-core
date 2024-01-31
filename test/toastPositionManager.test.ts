@@ -7,19 +7,20 @@ import {
   it,
   vi,
 } from "vitest";
-
-import * as utils from "../src";
 import {
   actionType,
-  assureToastsPosition,
   cssClassNames,
   displayOrder,
-  getToastsForReposition,
   position,
+} from "../src/constants";
+import {
+  assureToastsPosition,
+  getToastsForReposition,
   reindexToastsForPosition,
   repositionToasts,
   toggleToastsRepositionTransition,
-} from "../src";
+} from "../src/toastPositionManager";
+import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 
 describe("toastPositionManager", () => {

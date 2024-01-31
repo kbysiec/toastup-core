@@ -7,12 +7,14 @@ import {
   it,
   vi,
 } from "vitest";
-import { HidePayload, Toast, events, toastQueue } from "../../src";
 import * as actionManager from "../../src/actionManager";
+import { events } from "../../src/constants";
 import { handleHideToast, hide } from "../../src/handlers/hideHandler";
 import * as toastModule from "../../src/toast";
 import * as toastPositionManager from "../../src/toastPositionManager";
+import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
+import { HidePayload, Toast } from "../../src/types";
 import * as utils from "../../src/utils";
 import { toastBase } from "../mocks";
 

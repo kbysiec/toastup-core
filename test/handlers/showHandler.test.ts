@@ -7,16 +7,14 @@ import {
   it,
   vi,
 } from "vitest";
+import * as actionManager from "../../src/actionManager";
+import { slideHorizontalWithFadeInBody } from "../../src/animations/inBodyAnimation";
 import {
-  Toast,
   displayOrder,
   events,
   measureType,
   position,
-  slideHorizontalWithFadeInBody,
-  toastQueue,
-} from "../../src";
-import * as actionManager from "../../src/actionManager";
+} from "../../src/constants";
 import {
   animateBodyIfApplicable,
   getStartTranslateYForReversedOrder,
@@ -27,7 +25,9 @@ import {
 } from "../../src/handlers/showHandler";
 import * as toast from "../../src/toast";
 import * as toastPositionManager from "../../src/toastPositionManager";
+import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
+import { Toast } from "../../src/types";
 import * as utils from "../../src/utils";
 import { toastBase } from "../mocks";
 

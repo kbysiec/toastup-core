@@ -7,10 +7,11 @@ import {
   it,
   vi,
 } from "vitest";
-import { Toast, events } from "../../src";
+import { events } from "../../src/constants";
 import { handleClickToast } from "../../src/handlers/clickHandler";
 import * as toastModule from "../../src/toast";
 import * as toastQueue from "../../src/toastQueue";
+import { Toast } from "../../src/types";
 import { toastBase } from "../mocks";
 
 describe("clickHandler", () => {

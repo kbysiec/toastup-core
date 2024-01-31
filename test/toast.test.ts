@@ -7,14 +7,9 @@ import {
   it,
   vi,
 } from "vitest";
-import {
-  Config,
-  PartialBy,
-  Toast,
-  slideHorizontalWithFadeInBody,
-  slideVerticallyIn,
-  slideVerticallyOut,
-} from "../src";
+import { slideVerticallyIn } from "../src/animations/inAnimation";
+import { slideHorizontalWithFadeInBody } from "../src/animations/inBodyAnimation";
+import { slideVerticallyOut } from "../src/animations/outAnimation";
 import { displayOrder, events, position, theme, type } from "../src/constants";
 import { eventManager } from "../src/eventManager";
 import {
@@ -28,6 +23,7 @@ import {
   unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
+import { Config, PartialBy, Toast } from "../src/types";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 

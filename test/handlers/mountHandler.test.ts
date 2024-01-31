@@ -7,11 +7,12 @@ import {
   it,
   vi,
 } from "vitest";
-import { Toast, cssClassNames, events } from "../../src";
+import { cssClassNames, events } from "../../src/constants";
 import { eventManager } from "../../src/eventManager";
 import { handleMountedToast } from "../../src/handlers/mountHandler";
 import * as toastPositionManager from "../../src/toastPositionManager";
 import * as toastQueue from "../../src/toastQueue";
+import { Toast } from "../../src/types";
 import { toastBase } from "../mocks";
 
 describe("mountHandler", () => {
