@@ -10,6 +10,7 @@ export * from "@/handlers/dragHandler";
 export * from "@/handlers/hideHandler";
 export * from "@/handlers/mountHandler";
 export * from "@/handlers/showHandler";
+export * from "@/styles.scss";
 export * from "@/toast";
 export * from "@/toastPositionManager";
 export * from "@/toastQueue";
