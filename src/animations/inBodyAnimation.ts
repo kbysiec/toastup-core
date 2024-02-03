@@ -1,20 +1,20 @@
 import { animationType } from "@/constants";
-import { InBodyAnimation } from "@/types";
+import { ToastInBodyAnimation } from "@/types";
 import "./inBodyAnimation.scss";
 
-export const zoomInBody: InBodyAnimation = {
+export const zoomInBody: ToastInBodyAnimation = {
   type: animationType.body,
   animationName: "zoom-in-body",
   animationTime: 500,
 };
 
-export const slideHorizontalWithFadeInBody: InBodyAnimation = {
+export const slideHorizontalWithFadeInBody: ToastInBodyAnimation = {
   type: animationType.body,
   animationName: "slide-horizontal-with-fade-in-body",
   animationTime: 250,
 };
 
-export const slideVerticallyWithFadeInBody: InBodyAnimation = {
+export const slideVerticallyWithFadeInBody: ToastInBodyAnimation = {
   type: animationType.body,
   animationName: "slide-vertically-in-body",
   animationTime: 250,

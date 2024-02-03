@@ -1,57 +1,57 @@
 // import "animate.css";
 import { animationType } from "@/constants";
-import { InAnimation } from "@/types";
+import { ToastInAnimation } from "@/types";
 import "./inAnimation.scss";
 
-export const fadeIn: InAnimation = {
+export const fadeIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "fade-in",
   animationTime: 500,
 };
 
-export const zoomIn: InAnimation = {
+export const zoomIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "zoom-in",
   animationTime: 500,
 };
 
-export const zoomWithBounceIn: InAnimation = {
+export const zoomWithBounceIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "zoom-with-bounce-in",
   animationTime: 500,
 };
 
-export const slideVerticallyIn: InAnimation = {
+export const slideVerticallyIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "slide-vertically-in",
   animationTime: 500,
 };
 
-export const slideHorizontallyIn: InAnimation = {
+export const slideHorizontallyIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "slide-horizontally-in",
   animationTime: 500,
 };
 
-export const bounceHorizontallyIn: InAnimation = {
+export const bounceHorizontallyIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "bounce-horizontally-in",
   animationTime: 500,
 };
 
-export const singleBounceHorizontallyIn: InAnimation = {
+export const singleBounceHorizontallyIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "single-bounce-horizontally-in",
   animationTime: 500,
 };
 
-export const flipXIn: InAnimation = {
+export const flipXIn: ToastInAnimation = {
   type: animationType.in,
   className: "animate__animated animate__flipInX",
   animationTime: 500,
 };
 
-export const singleBounceVerticallyIn: InAnimation = {
+export const singleBounceVerticallyIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "single-bounce-vertically-in",
   animationTime: 500,

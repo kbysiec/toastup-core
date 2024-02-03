@@ -1,5 +1,5 @@
 import { animationElementSelector, cssClassNames } from "@/constants";
-import { Animation, AnimationElementSelector, ToastEntity } from "@/types";
+import { AnimationElementSelector, ToastAnimation, ToastEntity } from "@/types";
 import { getTransformOtherThan, sleep } from "@/utils";
 
 export const updateToastTranslate = (
@@ -27,7 +27,7 @@ export const updateToastTranslate = (
   }`;
 };
 
-export function toggleAnimation<T extends Animation>(
+export function toggleAnimation<T extends ToastAnimation>(
   toast: ToastEntity,
   getAnimation: (toast: ToastEntity) => T,
   flag: boolean,
@@ -90,7 +90,7 @@ export function toggleAnimation<T extends Animation>(
   }
 }
 
-export async function sleepForAnimationTime(animation: Animation) {
+export async function sleepForAnimationTime(animation: ToastAnimation) {
   animation.animationTime && (await sleep(animation.animationTime));
 }
 

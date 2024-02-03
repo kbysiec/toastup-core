@@ -43,10 +43,10 @@ const animationElementSelectorValues = Object.values(
 const themeValues = Object.values(theme).flat();
 
 export type EventType = (typeof eventValues)[number];
-export type Position = (typeof positionValues)[number];
-export type Theme = (typeof themeValues)[number];
+export type ToastPosition = (typeof positionValues)[number];
+export type ToastTheme = (typeof themeValues)[number];
 export type ActionType = keyof typeof actionType;
-export type Type = keyof typeof type;
+export type ToastType = keyof typeof type;
 export type DisplayOrder = keyof typeof displayOrder;
 export type AnimationType = keyof typeof animationType;
 export type AnimationElementSelector =
@@ -59,47 +59,50 @@ export interface Action {
   fn: () => void;
 }
 
-export interface AnimationBase {
+interface AnimationBase {
   type: AnimationType;
   className?: string;
   animationName?: string;
   animationTime?: number;
 }
 
-export interface InAnimationBase extends AnimationBase {
+interface InAnimationBase extends AnimationBase {
   type: "in";
 }
 
-export type InAnimation = RequireOnlyOne<
+export type ToastInAnimation = RequireOnlyOne<
   InAnimationBase,
   "className" | "animationName"
 >;
 
-export interface OutAnimation extends AnimationBase {
+export interface ToastOutAnimation extends AnimationBase {
   type: "out";
 }
 
-export interface BodyAnimationBase extends AnimationBase {
+interface BodyAnimationBase extends AnimationBase {
   type: "body";
 }
 
-export type InBodyAnimation = RequireOnlyOne<
+export type ToastInBodyAnimation = RequireOnlyOne<
   BodyAnimationBase,
   "className" | "animationName"
 >;
 
-export type Animation = InAnimation | OutAnimation | InBodyAnimation;
+export type ToastAnimation =
+  | ToastInAnimation
+  | ToastOutAnimation
+  | ToastInBodyAnimation;
 
 export interface Config {
   id: string;
   message: string;
   title: string;
-  position: Position;
-  type: Type;
+  position: ToastPosition;
+  type: ToastType;
   order: DisplayOrder;
-  inAnimation: InAnimation;
-  outAnimation: OutAnimation;
-  inBodyAnimation: InBodyAnimation;
+  inAnimation: ToastInAnimation;
+  outAnimation: ToastOutAnimation;
+  inBodyAnimation: ToastInBodyAnimation;
   hideOnClick: boolean;
   autoHide: number;
   delayBeforeShow: number;
@@ -112,7 +115,7 @@ export interface Config {
   pauseOnFocusLoss: boolean;
   dragOnMobile: boolean;
   removeOnDraggingPercent: number;
-  theme: Theme;
+  theme: ToastTheme;
   iconClassName: string;
   hideButtonClassName: string;
   contentClassName: string;
