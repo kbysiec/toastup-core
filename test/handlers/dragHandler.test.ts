@@ -17,7 +17,7 @@ import {
 } from "../../src/handlers/dragHandler";
 import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
-import { Toast } from "../../src/types";
+import { ToastEntity } from "../../src/types";
 import * as utils from "../../src/utils";
 import { toastBase } from "../mocks";
 
@@ -27,7 +27,7 @@ describe("dragHandler", () => {
   const pauseStub = vi.fn();
   const unpauseStub = vi.fn();
 
-  let queue: Map<string, Toast>;
+  let queue: Map<string, ToastEntity>;
   let toast = {
     ...toastBase,
     element: document.createElement("div"),
@@ -40,7 +40,7 @@ describe("dragHandler", () => {
       id: "1",
       element: document.createElement("div"),
     };
-    queue = new Map<string, Toast>();
+    queue = new Map<string, ToastEntity>();
     queue.set(toast.id, toast);
 
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);

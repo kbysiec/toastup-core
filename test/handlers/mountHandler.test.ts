@@ -12,14 +12,14 @@ import { eventManager } from "../../src/eventManager";
 import { handleMountedToast } from "../../src/handlers/mountHandler";
 import * as toastPositionManager from "../../src/toastPositionManager";
 import * as toastQueue from "../../src/toastQueue";
-import { Toast } from "../../src/types";
+import { ToastEntity } from "../../src/types";
 import { toastBase } from "../mocks";
 
 describe("mountHandler", () => {
   const reindexToastsForPositionStub = vi.fn();
   const emitStub = vi.fn();
 
-  let queue: Map<string, Toast>;
+  let queue: Map<string, ToastEntity>;
   let toast = {
     ...toastBase,
   };
@@ -29,7 +29,7 @@ describe("mountHandler", () => {
       ...toastBase,
     };
 
-    queue = new Map<string, Toast>();
+    queue = new Map<string, ToastEntity>();
     queue.set(toast.id, toast);
 
     vi.spyOn(toastQueue.toastQueue, "get").mockReturnValue(queue);
@@ -52,7 +52,9 @@ describe("mountHandler", () => {
     it("should do nothing if toast is already mounted", () => {
       toast.element = document.createElement("div");
 
-      const event = new CustomEvent<Toast>(events.mounted, { detail: toast });
+      const event = new CustomEvent<ToastEntity>(events.mounted, {
+        detail: toast,
+      });
 
       handleMountedToast(event);
 
@@ -65,7 +67,7 @@ describe("mountHandler", () => {
         element: document.createElement("div"),
       };
 
-      const event = new CustomEvent<Toast>(events.mounted, {
+      const event = new CustomEvent<ToastEntity>(events.mounted, {
         detail: mountedToast,
       });
 
@@ -80,7 +82,7 @@ describe("mountHandler", () => {
         element: document.createElement("div"),
       };
 
-      const event = new CustomEvent<Toast>(events.mounted, {
+      const event = new CustomEvent<ToastEntity>(events.mounted, {
         detail: mountedToast,
       });
 
@@ -95,7 +97,7 @@ describe("mountHandler", () => {
         element: document.createElement("div"),
       };
 
-      const event = new CustomEvent<Toast>(events.mounted, {
+      const event = new CustomEvent<ToastEntity>(events.mounted, {
         detail: mountedToast,
       });
 

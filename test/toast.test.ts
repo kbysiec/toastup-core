@@ -23,7 +23,7 @@ import {
   unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
-import { Config, PartialBy, Toast } from "../src/types";
+import { Config, PartialBy, ToastEntity } from "../src/types";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 
@@ -32,10 +32,10 @@ describe("toast", () => {
   const onStub = vi.fn();
   const offStub = vi.fn();
 
-  let queue: Map<string, Toast>;
+  let queue: Map<string, ToastEntity>;
 
   beforeEach(() => {
-    queue = new Map<string, Toast>();
+    queue = new Map<string, ToastEntity>();
 
     vi.spyOn(eventManager, "on").mockImplementation(onStub);
     vi.spyOn(eventManager, "off").mockImplementation(offStub);

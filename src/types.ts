@@ -168,7 +168,7 @@ export interface ComponentProps {
   className: string;
 }
 
-export interface Toast extends Config, ToastOnlyProps, ComponentProps {
+export interface ToastEntity extends Config, ToastOnlyProps, ComponentProps {
   hide: ToastHideHandler;
 }
 
@@ -205,7 +205,10 @@ const toastPrivateProps = [
   "toast",
 ] as const;
 
-export type ToastPublicProps = Omit<Toast, (typeof toastPrivateProps)[number]>;
+export type ToastPublicProps = Omit<
+  ToastEntity,
+  (typeof toastPrivateProps)[number]
+>;
 
 export type HidePayload = {
   toastId: string;
@@ -219,7 +222,7 @@ export type RemovePayload = {
 
 export type Payload =
   | Partial<Config>
-  | Toast
+  | ToastEntity
   | RemovePayload
   | HidePayload
   | string;

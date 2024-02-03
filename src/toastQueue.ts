@@ -1,12 +1,12 @@
-import { Toast } from "@/types";
+import { ToastEntity } from "@/types";
 
-const queue = new Map<string, Toast>();
+const queue = new Map<string, ToastEntity>();
 
 export function get() {
   return queue;
 }
 
-export function addToQueue(toast: Toast) {
+export function addToQueue(toast: ToastEntity) {
   const toastMap = toastQueue.get();
   const existingToast = toastMap.get(toast.id);
   if (toastMap.has(toast.id) && existingToast?.uuid !== toast.uuid) {
@@ -15,7 +15,7 @@ export function addToQueue(toast: Toast) {
   toastMap.set(toast.id, toast);
 }
 
-export function update(toast: Toast) {
+export function update(toast: ToastEntity) {
   const toastMap = toastQueue.get();
   toastMap.set(toast.id, toast);
 }

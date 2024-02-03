@@ -2,13 +2,13 @@ import { cssClassNames, events } from "@/constants";
 import { eventManager } from "@/eventManager";
 import { reindexToastsForPosition } from "@/toastPositionManager";
 import { toastQueue, update } from "@/toastQueue";
-import { Toast } from "@/types";
+import { ToastEntity } from "@/types";
 
-function addNecessaryClassName(toast: Toast) {
+function addNecessaryClassName(toast: ToastEntity) {
   toast.element && toast.element.classList.add(cssClassNames.toast);
 }
 
-export function handleMountedToast(event: CustomEvent<Toast>) {
+export function handleMountedToast(event: CustomEvent<ToastEntity>) {
   const toastMap = toastQueue.get();
   const mountedToast = event.detail;
   const toast = toastMap.get(mountedToast.id);

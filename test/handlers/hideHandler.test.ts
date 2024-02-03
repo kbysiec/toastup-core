@@ -14,12 +14,12 @@ import * as toastModule from "../../src/toast";
 import * as toastPositionManager from "../../src/toastPositionManager";
 import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
-import { HidePayload, Toast } from "../../src/types";
+import { HidePayload, ToastEntity } from "../../src/types";
 import * as utils from "../../src/utils";
 import { toastBase } from "../mocks";
 
 describe("hideHandler", () => {
-  let queue: Map<string, Toast>;
+  let queue: Map<string, ToastEntity>;
   let toast = {
     ...toastBase,
   };
@@ -28,7 +28,7 @@ describe("hideHandler", () => {
     toast = {
       ...toastBase,
     };
-    queue = new Map<string, Toast>();
+    queue = new Map<string, ToastEntity>();
     queue.set(toast.id, toast);
 
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);

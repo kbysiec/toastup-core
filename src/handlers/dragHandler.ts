@@ -2,7 +2,7 @@ import { cssClassNames } from "@/constants";
 import { pause, unpause } from "@/toast";
 import { toastQueue } from "@/toastQueue";
 import { updateToastTranslate } from "@/toastUtils";
-import { Toast } from "@/types";
+import { ToastEntity } from "@/types";
 import { sleep } from "@/utils";
 
 function getDragX(event: TouchEvent) {
@@ -11,11 +11,11 @@ function getDragX(event: TouchEvent) {
     : 0;
 }
 
-function getToastDragDelta(toast: Toast) {
+function getToastDragDelta(toast: ToastEntity) {
   return toast.dragDetails.x - toast.dragDetails.start;
 }
 
-function setToastOpacityOnDrag(toast: Toast) {
+function setToastOpacityOnDrag(toast: ToastEntity) {
   if (!toast.element?.style) return;
 
   toast.element.style.opacity = `${
@@ -23,22 +23,25 @@ function setToastOpacityOnDrag(toast: Toast) {
   }`;
 }
 
-function ifDragDeltaIsGreaterThanRemovalDistance(toast: Toast) {
+function ifDragDeltaIsGreaterThanRemovalDistance(toast: ToastEntity) {
   return Math.abs(toast.dragDetails.delta) > toast.dragDetails.removalDistance;
 }
 
-function updateDragDeltaForSmoothAnimation(toast: Toast) {
+function updateDragDeltaForSmoothAnimation(toast: ToastEntity) {
   toast.dragDetails.delta = toast.dragDetails.delta * 1.3;
 }
 
-function resetToastDragState(toast: Toast) {
+function resetToastDragState(toast: ToastEntity) {
   if (toast.element?.style) {
     toast.element.style.opacity = "";
   }
   updateToastTranslate(toast, toast.translate.x, toast.translate.y, false);
 }
 
-export function toggleToastDragTransition(toast: Toast, duringDrag: boolean) {
+export function toggleToastDragTransition(
+  toast: ToastEntity,
+  duringDrag: boolean
+) {
   toast.element?.classList.toggle(cssClassNames.toastDragging, duringDrag);
 }
 

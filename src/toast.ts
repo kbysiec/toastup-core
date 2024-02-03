@@ -16,8 +16,8 @@ import { handleShowToast } from "@/handlers/showHandler";
 import { toastQueue } from "@/toastQueue";
 import {
   Config,
-  Toast,
   ToastCallback,
+  ToastEntity,
   ToastOnlyProps,
   ToastPublicProps,
 } from "@/types";
@@ -146,7 +146,7 @@ export function getDefaultConfig() {
   return defaultConfig;
 }
 
-function getPublicProps(toast: Toast) {
+function getPublicProps(toast: ToastEntity) {
   const props: ToastPublicProps = {
     id: toast.id,
     isVisible: toast.isVisible,
@@ -195,8 +195,8 @@ function getPublicProps(toast: Toast) {
 }
 
 export function executeToastCallback<T extends ToastCallback>(
-  toast: Toast,
-  getCallback: (toast: Toast) => T
+  toast: ToastEntity,
+  getCallback: (toast: ToastEntity) => T
 ) {
   const callback = getCallback(toast);
   const props = getPublicProps(toast);

@@ -1,9 +1,9 @@
 import { animationElementSelector, cssClassNames } from "@/constants";
-import { Animation, AnimationElementSelector, Toast } from "@/types";
+import { Animation, AnimationElementSelector, ToastEntity } from "@/types";
 import { getTransformOtherThan, sleep } from "@/utils";
 
 export const updateToastTranslate = (
-  toast: Toast,
+  toast: ToastEntity,
   translateXValue: number,
   translateYValue: number,
   withStyle = true
@@ -28,8 +28,8 @@ export const updateToastTranslate = (
 };
 
 export function toggleAnimation<T extends Animation>(
-  toast: Toast,
-  getAnimation: (toast: Toast) => T,
+  toast: ToastEntity,
+  getAnimation: (toast: ToastEntity) => T,
   flag: boolean,
   elementSelector: AnimationElementSelector = animationElementSelector.container
 ) {
@@ -94,7 +94,7 @@ export async function sleepForAnimationTime(animation: Animation) {
   animation.animationTime && (await sleep(animation.animationTime));
 }
 
-export function setToastVisibility(toast: Toast, isVisible: boolean) {
+export function setToastVisibility(toast: ToastEntity, isVisible: boolean) {
   if (!toast.element || !toast.element) return;
   // const containerEl = toast.element.querySelector(
   //   animationElementSelector.container

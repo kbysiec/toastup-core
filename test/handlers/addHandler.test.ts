@@ -10,18 +10,18 @@ import {
 import { events } from "../../src/constants";
 import { handleAddedToast } from "../../src/handlers/addHandler";
 import * as toastQueue from "../../src/toastQueue";
-import { Toast } from "../../src/types";
+import { ToastEntity } from "../../src/types";
 import { toastBase } from "../mocks";
 
 describe("addHandler", () => {
   const addStub = vi.fn();
 
-  let queue: Map<string, Toast>;
+  let queue: Map<string, ToastEntity>;
   let toast = { ...toastBase };
 
   beforeEach(() => {
     toast = { ...toastBase };
-    queue = new Map<string, Toast>();
+    queue = new Map<string, ToastEntity>();
     vi.spyOn(toastQueue.toastQueue, "get").mockReturnValue(queue);
     vi.spyOn(toastQueue, "addToQueue").mockImplementation(addStub);
   });
@@ -36,7 +36,9 @@ describe("addHandler", () => {
 
   describe("handleAddedToast", () => {
     it("should add function be invoked with toast", () => {
-      const event = new CustomEvent<Toast>(events.added, { detail: toast });
+      const event = new CustomEvent<ToastEntity>(events.added, {
+        detail: toast,
+      });
 
       handleAddedToast(event);
       expect(addStub).toHaveBeenCalledWith(toast);

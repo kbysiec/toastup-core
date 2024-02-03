@@ -2,9 +2,9 @@ import { slideVerticallyIn } from "../src/animations/inAnimation";
 import { slideHorizontalWithFadeInBody } from "../src/animations/inBodyAnimation";
 import { slideVerticallyOut } from "../src/animations/outAnimation";
 import { displayOrder, position, theme, type } from "../src/constants";
-import { Toast } from "../src/types";
+import { ToastEntity } from "../src/types";
 
-export const toastBase: Toast = {
+export const toastBase: ToastEntity = {
   id: "123",
   uuid: "123",
   element: null,

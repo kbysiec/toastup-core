@@ -20,12 +20,15 @@ import {
   toggleAnimation,
   updateToastTranslate,
 } from "@/toastUtils";
-import { Action, MeasureType, Toast } from "@/types";
+import { Action, MeasureType, ToastEntity } from "@/types";
 import { getOuter, sleep } from "@/utils";
 
-function getToastWithHighestTranslateY(toasts: Toast[], toast: Toast) {
+function getToastWithHighestTranslateY(
+  toasts: ToastEntity[],
+  toast: ToastEntity
+) {
   const toastWithHighestTranslateY = toasts.length
-    ? toasts.reduce((prev: Toast, current: Toast) => {
+    ? toasts.reduce((prev: ToastEntity, current: ToastEntity) => {
         if (toast.position.includes("top")) {
           return prev.translate.y > current.translate.y ? prev : current;
         } else {
@@ -38,8 +41,8 @@ function getToastWithHighestTranslateY(toasts: Toast[], toast: Toast) {
 }
 
 export function getStartTranslateYForReversedOrder(
-  toast: Toast,
-  toasts: Toast[],
+  toast: ToastEntity,
+  toasts: ToastEntity[],
   sameAsLastToast = false
 ) {
   const toastWithBiggestTranslateY = getToastWithHighestTranslateY(
@@ -66,7 +69,7 @@ export function getStartTranslateYForReversedOrder(
   return toast.translate.y;
 }
 
-export async function animateBodyIfApplicable(toast: Toast) {
+export async function animateBodyIfApplicable(toast: ToastEntity) {
   if (!toast.animateBody) return;
 
   toggleAnimation(
@@ -81,7 +84,7 @@ export async function animateBodyIfApplicable(toast: Toast) {
     ?.classList.toggle(`${cssClassNames.bodyVisible}`, true);
 }
 
-async function showToast(toast: Toast) {
+async function showToast(toast: ToastEntity) {
   executeToastCallback(toast, t => t.onShowing);
   toast.isVisible = true;
   toggleAnimation(toast, t => t.inAnimation, true);
@@ -91,7 +94,10 @@ async function showToast(toast: Toast) {
   await animateBodyIfApplicable(toast);
 }
 
-async function showAndRepositionNormalOrder(toast: Toast, toasts: Toast[]) {
+async function showAndRepositionNormalOrder(
+  toast: ToastEntity,
+  toasts: ToastEntity[]
+) {
   const delayAfterRepositionInMs = 300;
 
   toggleToastsRepositionTransition(toasts, true);
@@ -111,7 +117,10 @@ async function showAndRepositionNormalOrder(toast: Toast, toasts: Toast[]) {
   toggleToastsRepositionTransition(toasts, false);
 }
 
-async function showAndRepositionReversedOrder(toast: Toast, toasts: Toast[]) {
+async function showAndRepositionReversedOrder(
+  toast: ToastEntity,
+  toasts: ToastEntity[]
+) {
   const translate = {
     x: toast.translate.x,
     y: toasts.length ? getStartTranslateYForReversedOrder(toast, toasts) : 0,
@@ -130,7 +139,7 @@ async function showAndRepositionReversedOrder(toast: Toast, toasts: Toast[]) {
     );
 }
 
-async function showAndReposition(toast: Toast) {
+async function showAndReposition(toast: ToastEntity) {
   setMeasure(toast, measureType.height);
   setMeasure(toast, measureType.width);
   const toastMap = toastQueue.get();
@@ -148,14 +157,14 @@ async function showAndReposition(toast: Toast) {
   setToastAutoHide(toast);
 }
 
-export async function show(toast: Toast) {
+export async function show(toast: ToastEntity) {
   const toastMap = toastQueue.get();
   await showAndReposition(toast);
   const toasts = Array.from(toastMap.values());
   await assureToastsPosition(toast, toasts);
 }
 
-export async function handleShowToast(event: CustomEvent<Toast>) {
+export async function handleShowToast(event: CustomEvent<ToastEntity>) {
   const toast = event.detail;
 
   const action: Action = {
@@ -165,7 +174,7 @@ export async function handleShowToast(event: CustomEvent<Toast>) {
   await register(action);
 }
 
-export function setMeasure(toast: Toast, measure: MeasureType) {
+export function setMeasure(toast: ToastEntity, measure: MeasureType) {
   if (!toast.element || !toast.element) return;
   toast.dimensions = {
     ...toast.dimensions,
@@ -173,19 +182,19 @@ export function setMeasure(toast: Toast, measure: MeasureType) {
   };
 }
 
-function setToastProgress(toast: Toast, value: number) {
+function setToastProgress(toast: ToastEntity, value: number) {
   toast.element?.style.setProperty("--progressValue", `${value}`);
 }
 
-function isReadyForAutoHide(toast: Toast) {
+function isReadyForAutoHide(toast: ToastEntity) {
   return toast.autoHideDetails.timeVisible >= toast.autoHide;
 }
 
-function shouldRecalculateTimeVisible(toast: Toast) {
+function shouldRecalculateTimeVisible(toast: ToastEntity) {
   return !toast.autoHideDetails.isPaused;
 }
 
-function shouldSetProgress(toast: Toast) {
+function shouldSetProgress(toast: ToastEntity) {
   return (
     toast.showProgress &&
     typeof toast.autoHide === "number" &&
@@ -194,14 +203,14 @@ function shouldSetProgress(toast: Toast) {
 }
 
 function recalculateTimeVisible(
-  toast: Toast,
+  toast: ToastEntity,
   currentTime: number,
   lastTime: number
 ) {
   toast.autoHideDetails.timeVisible += currentTime - lastTime;
 }
 
-export function setToastAutoHide(toast: Toast) {
+export function setToastAutoHide(toast: ToastEntity) {
   if (!toast.autoHide) return;
 
   let lastTime = new Date().getTime();

@@ -1,7 +1,7 @@
 import { addToQueue } from "@/toastQueue";
-import { Toast } from "@/types";
+import { ToastEntity } from "@/types";
 
-export function handleAddedToast(event: CustomEvent<Toast>) {
+export function handleAddedToast(event: CustomEvent<ToastEntity>) {
   const toast = event.detail;
   addToQueue(toast);
 }

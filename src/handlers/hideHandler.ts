@@ -13,10 +13,10 @@ import {
   sleepForAnimationTime,
   toggleAnimation,
 } from "@/toastUtils";
-import { Action, HidePayload, Toast } from "@/types";
+import { Action, HidePayload, ToastEntity } from "@/types";
 import { sleep } from "@/utils";
 
-async function hideToast(toast: Toast, withAnimation: boolean) {
+async function hideToast(toast: ToastEntity, withAnimation: boolean) {
   executeToastCallback(toast, t => t.onHiding);
 
   withAnimation && toggleAnimation(toast, t => t.outAnimation, true);
@@ -27,7 +27,7 @@ async function hideToast(toast: Toast, withAnimation: boolean) {
   executeToastCallback(toast, t => t.onHide);
 }
 
-async function hideAndReposition(toast: Toast, withAnimation: boolean) {
+async function hideAndReposition(toast: ToastEntity, withAnimation: boolean) {
   const delayAfterRepositionInMs = 400;
   await hideToast(toast, withAnimation);
 
@@ -46,7 +46,7 @@ async function hideAndReposition(toast: Toast, withAnimation: boolean) {
 }
 
 export async function hide(
-  toast: Toast,
+  toast: ToastEntity,
   withAnimation: boolean,
   callback: () => void
 ) {

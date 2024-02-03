@@ -8,14 +8,14 @@ import {
   vi,
 } from "vitest";
 import { addToQueue, get, toastQueue, update } from "../src/toastQueue";
-import { Toast } from "../src/types";
+import { ToastEntity } from "../src/types";
 import { toastBase } from "./mocks";
 
 describe("toastQueue", () => {
-  let queue: Map<string, Toast>;
+  let queue: Map<string, ToastEntity>;
 
   beforeEach(() => {
-    queue = new Map<string, Toast>();
+    queue = new Map<string, ToastEntity>();
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);
   });
 

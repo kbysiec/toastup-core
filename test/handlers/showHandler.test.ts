@@ -27,15 +27,15 @@ import * as toast from "../../src/toast";
 import * as toastPositionManager from "../../src/toastPositionManager";
 import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
-import { Toast } from "../../src/types";
+import { ToastEntity } from "../../src/types";
 import * as utils from "../../src/utils";
 import { toastBase } from "../mocks";
 
 describe("showHandler", () => {
-  let queue: Map<string, Toast>;
+  let queue: Map<string, ToastEntity>;
 
   beforeEach(() => {
-    queue = new Map<string, Toast>();
+    queue = new Map<string, ToastEntity>();
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);
   });
 
@@ -380,7 +380,7 @@ describe("showHandler", () => {
         ...toastBase,
       };
 
-      const event = new CustomEvent<Toast>(events.show, {
+      const event = new CustomEvent<ToastEntity>(events.show, {
         detail: toast,
       });
 

@@ -1,9 +1,13 @@
 import { actionType, cssClassNames, displayOrder } from "@/constants";
 import { updateToastTranslate } from "@/toastUtils";
-import { ActionType, Toast } from "@/types";
+import { ActionType, ToastEntity } from "@/types";
 import { sleep } from "@/utils";
 
-function repositionToast(toast: Toast, touchedToast: Toast, type: ActionType) {
+function repositionToast(
+  toast: ToastEntity,
+  touchedToast: ToastEntity,
+  type: ActionType
+) {
   const typeMultiplier = type === actionType.add ? 1 : -1;
 
   const translateYOffset = toast.position.includes("top")
@@ -15,27 +19,30 @@ function repositionToast(toast: Toast, touchedToast: Toast, type: ActionType) {
 }
 
 export function repositionToasts(
-  toasts: Toast[],
-  toast: Toast,
+  toasts: ToastEntity[],
+  toast: ToastEntity,
   actType: ActionType
 ) {
   toasts.forEach(t => repositionToast(t, toast, actType));
 }
 
-function setToastIndex(toast: Toast, toasts: Toast[]) {
+function setToastIndex(toast: ToastEntity, toasts: ToastEntity[]) {
   if (toast.order !== displayOrder.reversed) return;
   toast.index = toasts.length;
 }
 
-function incrementToastsIndexByOne(toasts: Toast[]) {
+function incrementToastsIndexByOne(toasts: ToastEntity[]) {
   toasts.forEach(toast => (toast.index = toast.index + 1));
 }
 
-function getToastsForReindex(toasts: Toast[], toast: Toast) {
+function getToastsForReindex(toasts: ToastEntity[], toast: ToastEntity) {
   return toasts.filter(t => toast.position === t.position && toast.id !== t.id);
 }
 
-export function reindexToastsForPosition(toast: Toast, toasts: Toast[]) {
+export function reindexToastsForPosition(
+  toast: ToastEntity,
+  toasts: ToastEntity[]
+) {
   setToastIndex(toast, toasts);
   const toastsForReindex = getToastsForReindex(toasts, toast);
   toast.order === displayOrder.normal &&
@@ -46,7 +53,7 @@ export function reindexToastsForPosition(toast: Toast, toasts: Toast[]) {
 }
 
 export function toggleToastsRepositionTransition(
-  toasts: Toast[],
+  toasts: ToastEntity[],
   duringReposition: boolean,
   quickReposition = false
 ) {
@@ -60,7 +67,10 @@ export function toggleToastsRepositionTransition(
   });
 }
 
-function shouldBeRepositionedOnAdd(addedToast: Toast, toast: Toast) {
+function shouldBeRepositionedOnAdd(
+  addedToast: ToastEntity,
+  toast: ToastEntity
+) {
   return (
     toast.isVisible &&
     toast.position === addedToast.position &&
@@ -68,7 +78,10 @@ function shouldBeRepositionedOnAdd(addedToast: Toast, toast: Toast) {
   );
 }
 
-function shouldBeRepositionedOnRemove(removedToast: Toast, toast: Toast) {
+function shouldBeRepositionedOnRemove(
+  removedToast: ToastEntity,
+  toast: ToastEntity
+) {
   return (
     toast.isVisible &&
     toast.position === removedToast.position &&
@@ -77,8 +90,8 @@ function shouldBeRepositionedOnRemove(removedToast: Toast, toast: Toast) {
 }
 
 export function getToastsForReposition(
-  toasts: Toast[],
-  toast: Toast,
+  toasts: ToastEntity[],
+  toast: ToastEntity,
   actType: ActionType
 ) {
   return toasts.filter(t =>
@@ -88,11 +101,15 @@ export function getToastsForReposition(
   );
 }
 
-function getToastsForAssurePosition(toasts: Toast[], toast: Toast) {
+function getToastsForAssurePosition(toasts: ToastEntity[], toast: ToastEntity) {
   return toasts.filter(t => t.isVisible && toast.position === t.position);
 }
 
-function assureToastPosition(toast: Toast, index: number, toasts: Toast[]) {
+function assureToastPosition(
+  toast: ToastEntity,
+  index: number,
+  toasts: ToastEntity[]
+) {
   const prev = toasts[index - 1];
   let translateY = 0;
   if (prev) {
@@ -103,7 +120,10 @@ function assureToastPosition(toast: Toast, index: number, toasts: Toast[]) {
   updateToastTranslate(toast, toast.translate.x, translateY);
 }
 
-export async function assureToastsPosition(toast: Toast, toasts: Toast[]) {
+export async function assureToastsPosition(
+  toast: ToastEntity,
+  toasts: ToastEntity[]
+) {
   const delayAfterRepositionInMs = 150;
   const toastsForPosition = getToastsForAssurePosition(toasts, toast);
   toastsForPosition.sort((a, b) => a.index - b.index);
