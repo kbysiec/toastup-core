@@ -23,7 +23,7 @@ import {
   unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
-import { Config, PartialBy, ToastEntity } from "../src/types";
+import { PartialBy, ToastConfig, ToastEntity } from "../src/types";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 
@@ -82,7 +82,7 @@ describe("toast", () => {
 
   describe("getToastPropsForCreate", () => {
     it("should return toast props necessary for getting toast", () => {
-      const config: Config = {
+      const config: ToastConfig = {
         id: "123",
         message: "Awesome 🎉",
         title: type.base,
@@ -197,8 +197,8 @@ describe("toast", () => {
 
   describe("getDefaultConfig", () => {
     it("should return default config for toast", () => {
-      const defaultConfig: PartialBy<Config, "id"> = getDefaultConfig();
-      const expectedConfig: PartialBy<Config, "id"> = {
+      const defaultConfig: PartialBy<ToastConfig, "id"> = getDefaultConfig();
+      const expectedConfig: PartialBy<ToastConfig, "id"> = {
         id: "123",
         message: "Awesome 🎉",
         title: type.base,

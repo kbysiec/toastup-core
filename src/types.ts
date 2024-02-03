@@ -93,7 +93,7 @@ export type ToastAnimation =
   | ToastOutAnimation
   | ToastInBodyAnimation;
 
-export interface Config {
+export interface ToastConfig {
   id: string;
   message: string;
   title: string;
@@ -171,7 +171,10 @@ export interface ComponentProps {
   className: string;
 }
 
-export interface ToastEntity extends Config, ToastOnlyProps, ComponentProps {
+export interface ToastEntity
+  extends ToastConfig,
+    ToastOnlyProps,
+    ComponentProps {
   hide: ToastHideHandler;
 }
 
@@ -224,7 +227,7 @@ export type RemovePayload = {
 };
 
 export type Payload =
-  | Partial<Config>
+  | Partial<ToastConfig>
   | ToastEntity
   | RemovePayload
   | HidePayload
@@ -233,5 +236,5 @@ export type Payload =
 const toastOnlyConfigProps = ["id"] as const;
 
 export type ToasterConfig = Partial<
-  Omit<Config, (typeof toastOnlyConfigProps)[number]>
+  Omit<ToastConfig, (typeof toastOnlyConfigProps)[number]>
 >;

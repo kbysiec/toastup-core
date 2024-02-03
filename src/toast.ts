@@ -15,15 +15,15 @@ import { handleMountedToast } from "@/handlers/mountHandler";
 import { handleShowToast } from "@/handlers/showHandler";
 import { toastQueue } from "@/toastQueue";
 import {
-  Config,
   ToastCallback,
+  ToastConfig,
   ToastEntity,
   ToastOnlyProps,
   ToastPublicProps,
 } from "@/types";
 import { uuid } from "@/utils";
 
-export function add<T extends Config>(overriddenConfig: Partial<T> = {}) {
+export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
   overriddenConfig.id = overriddenConfig.id ? overriddenConfig.id : uuid();
   eventManager.emit(events.add, overriddenConfig);
 
@@ -66,7 +66,7 @@ export function unpause(id: string) {
   togglePause(id, false);
 }
 
-export function getToastPropsForCreate(config: Config) {
+export function getToastPropsForCreate(config: ToastConfig) {
   const commonProps: ToastOnlyProps = {
     element: null,
     uuid: uuid(),
@@ -98,7 +98,7 @@ export function getToastPropsForCreate(config: Config) {
 }
 
 export function getDefaultConfig() {
-  const defaultConfig: Config = {
+  const defaultConfig: ToastConfig = {
     id: uuid(),
     message: "Awesome 🎉",
     title: type.base,
