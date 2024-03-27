@@ -1,6 +1,6 @@
 {
   "name": "@toastup/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/toastup-core.cjs",
   "module": "./dist/toastup-core.mjs",
   "exports": {
