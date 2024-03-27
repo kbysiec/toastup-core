@@ -1,7 +1,6 @@
 {
-  "name": "toastup-core",
-  "private": true,
-  "version": "0.0.2",
+  "name": "@toastup/core",
+  "version": "0.0.1",
   "main": "./dist/toastup-core.cjs",
   "module": "./dist/toastup-core.mjs",
   "exports": {
@@ -15,6 +14,9 @@
     }
   },
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite --host",
     "build": "vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
