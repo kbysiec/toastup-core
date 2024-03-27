@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/toast.svg" alt="logo"
+  <img src="https://github.com/kbysiec/toastup-core/raw/master/assets/toast.svg" alt="logo"
   style="width: 10em" />
 </div>
 
@@ -8,8 +8,9 @@
 This is the core of the Toastup project. Contains the heart of the library. The core is framework agnostic and can be implemented in any frontend framework or ui library.
 
 Available for:
-* [React](https://github.com/kbysiec/toastup-react)
-* VanillaJS (soon)
+
+- [React](https://github.com/kbysiec/toastup-react)
+- VanillaJS (soon)
 
 ## How to install
 
