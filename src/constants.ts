@@ -73,7 +73,6 @@ export const cssClassNames = {
   toastRepositioning: `${cssNamespace}__toast--repositioning`,
   toastQuickRepositioning: `${cssNamespace}__toast--quick-repositioning`,
   toastDragging: `${cssNamespace}__toast--dragging`,
-  toastThemeChanging: `${cssNamespace}__toast--theme-changing`,
   toastRtl: `${cssNamespace}__toast--rtl`,
   toastThemeLight: `${cssNamespace}__toast-theme--light`,
   toastThemeDark: `${cssNamespace}__toast-theme--dark`,

@@ -323,22 +323,16 @@ $namespace: "toastup";
 
   &--repositioning {
     transition:
-      transform 0.25s ease-in-out 0.15s,
-      opacity 0.2s ease-in-out !important;
+      transform 0.15s ease 0.05s,
+      opacity 0.1s ease !important;
   }
 
   &--quick-repositioning {
-    transition: transform 0.15s ease-in-out !important;
+    transition: transform 0.1s ease-in-out !important;
   }
 
   &--dragging {
     transition: transform 0.1s linear !important;
-  }
-
-  &--theme-changing {
-    transition:
-      background 0.25s ease-in-out,
-      color 0.15s ease-in-out !important;
   }
 
   &--rtl {
