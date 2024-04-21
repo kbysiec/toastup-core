@@ -5,7 +5,7 @@ import "./inBodyAnimation.scss";
 export const zoomInBody: ToastInBodyAnimation = {
   type: animationType.body,
   animationName: "zoom-in-body",
-  animationTime: 500,
+  animationTime: 350,
 };
 
 export const slideHorizontalWithFadeInBody: ToastInBodyAnimation = {

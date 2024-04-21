@@ -98,7 +98,7 @@ async function showAndRepositionNormalOrder(
   toast: ToastEntity,
   toasts: ToastEntity[]
 ) {
-  const delayAfterRepositionInMs = 300;
+  const delayAfterRepositionInMs = 160;
 
   toggleToastsRepositionTransition(toasts, true);
   repositionToasts(toasts, toast, actionType.add);
